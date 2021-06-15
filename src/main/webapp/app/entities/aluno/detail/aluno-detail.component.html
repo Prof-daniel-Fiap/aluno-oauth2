@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="aluno">
+      <h2 data-cy="alunoDetailsHeading"><span>Aluno</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ aluno.id }}</span>
+        </dd>
+        <dt><span>Nome</span></dt>
+        <dd>
+          <span>{{ aluno.nome }}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+          <span>{{ aluno.email }}</span>
+        </dd>
+        <dt><span>Data Nascimento</span></dt>
+        <dd>
+          <span>{{ aluno.dataNascimento | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Rm</span></dt>
+        <dd>
+          <span>{{ aluno.rm }}</span>
+        </dd>
+        <dt><span>Foto</span></dt>
+        <dd>
+          <div *ngIf="aluno.foto">
+            <a (click)="openFile(aluno.foto, aluno.fotoContentType)">
+              <img [src]="'data:' + aluno.fotoContentType + ';base64,' + aluno.foto" style="max-width: 100%" alt="aluno image" />
+            </a>
+            {{ aluno.fotoContentType }}, {{ byteSize(aluno.foto) }}
+          </div>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+          <span>{{ aluno.status }}</span>
+        </dd>
+        <dt><span>Turma</span></dt>
+        <dd>
+          <span *ngFor="let turma of aluno.turmas; let last = last">
+            <a [routerLink]="['/turma', turma?.id, 'view']">{{ turma.codigoTurma }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/aluno', aluno.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

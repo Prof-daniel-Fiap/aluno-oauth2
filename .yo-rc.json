@@ -40,6 +40,8 @@
     "packageFolder": "com/mycompany/myapp",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "entities": ["Aluno", "Curso", "Turma"],
+    "lastLiquibaseTimestamp": 1623784186000
   }
 }

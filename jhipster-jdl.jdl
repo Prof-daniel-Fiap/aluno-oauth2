@@ -1,0 +1,53 @@
+
+entity Aluno {
+	nome String,
+    email String,
+    dataNascimento LocalDate,
+    rm Integer,
+    foto ImageBlob,
+    status Status
+}
+
+enum Status {
+    PREATIVO, ATIVO, SUSPENSO, CONCLUIDO
+}
+
+entity Curso{
+	nomeCurso String,
+    dataCriacao LocalDate,
+    descricao TextBlob,
+    logoCurso ImageBlob,
+    tipo TipoCurso,
+}
+
+enum TipoCurso{
+	MBA, SHIFT, BOOTCAMP, HACKATON
+}
+
+entity Turma{
+	codigoTurma String,
+    dataCriacao LocalDate,
+    unidade String,
+    observacoes TextBlob
+}
+
+relationship ManyToMany{
+	Aluno{turma(codigoTurma)} to Turma{Aluno(rm)},    
+}
+
+relationship OneToMany {
+	Turma{curso(nomeCurso)} to Curso
+}
+
+// Set pagination options
+paginate Aluno with infinite-scroll
+paginate Curso, Turma with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

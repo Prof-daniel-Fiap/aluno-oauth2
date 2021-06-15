@@ -1,0 +1,51 @@
+{
+  "name": "Aluno",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataNascimento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "rm",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "foto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "Status",
+      "fieldValues": "PREATIVO,ATIVO,SUSPENSO,CONCLUIDO"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "turma",
+      "otherEntityRelationshipName": "aluno",
+      "relationshipName": "turma",
+      "otherEntityField": "codigoTurma",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "aluno",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210615190944"
+}

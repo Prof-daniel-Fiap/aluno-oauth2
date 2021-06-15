@@ -1,0 +1,46 @@
+{
+  "name": "Curso",
+  "fields": [
+    {
+      "fieldName": "nomeCurso",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataCriacao",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "logoCurso",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "tipo",
+      "fieldType": "TipoCurso",
+      "fieldValues": "MBA,SHIFT,BOOTCAMP,HACKATON"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "turma",
+      "otherEntityRelationshipName": "curso",
+      "relationshipName": "turma"
+    }
+  ],
+  "entityTableName": "curso",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210615190945"
+}

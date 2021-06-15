@@ -1,0 +1,49 @@
+{
+  "name": "Turma",
+  "fields": [
+    {
+      "fieldName": "codigoTurma",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dataCriacao",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "unidade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observacoes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "curso",
+      "otherEntityRelationshipName": "turma",
+      "relationshipName": "curso",
+      "otherEntityField": "nomeCurso"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "aluno",
+      "otherEntityRelationshipName": "turma",
+      "relationshipName": "aluno",
+      "otherEntityField": "rm",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "turma",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210615190946"
+}

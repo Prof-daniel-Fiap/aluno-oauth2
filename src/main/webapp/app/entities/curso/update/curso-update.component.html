@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-curso-heading" data-cy="CursoCreateUpdateHeading">Create or edit a Curso</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_nomeCurso">Nome Curso</label>
+          <input type="text" class="form-control" name="nomeCurso" id="field_nomeCurso" data-cy="nomeCurso" formControlName="nomeCurso" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dataCriacao">Data Criacao</label>
+          <div class="input-group">
+            <input
+              id="field_dataCriacao"
+              data-cy="dataCriacao"
+              type="text"
+              class="form-control"
+              name="dataCriacao"
+              ngbDatepicker
+              #dataCriacaoDp="ngbDatepicker"
+              formControlName="dataCriacao"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dataCriacaoDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_descricao">Descricao</label>
+          <textarea class="form-control" name="descricao" id="field_descricao" data-cy="descricao" formControlName="descricao"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_logoCurso">Logo Curso</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('logoCursoContentType')!.value + ';base64,' + editForm.get('logoCurso')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('logoCurso')!.value"
+              alt="curso image"
+            />
+            <div *ngIf="editForm.get('logoCurso')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('logoCursoContentType')!.value }}, {{ byteSize(editForm.get('logoCurso')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('logoCurso', 'logoCursoContentType', 'file_logoCurso')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_logoCurso" data-cy="logoCurso" (change)="setFileData($event, 'logoCurso', true)" accept="image/*" />
+          </div>
+          <input type="hidden" class="form-control" name="logoCurso" id="field_logoCurso" data-cy="logoCurso" formControlName="logoCurso" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="logoCursoContentType"
+            id="field_logoCursoContentType"
+            formControlName="logoCursoContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_tipo">Tipo</label>
+          <select class="form-control" name="tipo" formControlName="tipo" id="field_tipo" data-cy="tipo">
+            <option [ngValue]="null"></option>
+            <option value="MBA">MBA</option>
+            <option value="SHIFT">SHIFT</option>
+            <option value="BOOTCAMP">BOOTCAMP</option>
+            <option value="HACKATON">HACKATON</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_turma">Turma</label>
+          <select class="form-control" id="field_turma" data-cy="turma" name="turma" formControlName="turma">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="turmaOption.id === editForm.get('turma')!.value?.id ? editForm.get('turma')!.value : turmaOption"
+              *ngFor="let turmaOption of turmasSharedCollection; trackBy: trackTurmaById"
+            >
+              {{ turmaOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

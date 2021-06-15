@@ -1,0 +1,11 @@
+id;nome_curso;data_criacao;descricao;logo_curso;logo_curso_content_type;tipo
+1;Kansas Port Trace;2021-06-14;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;BOOTCAMP
+2;calculating;2021-06-14;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;MBA
+3;Granite;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;HACKATON
+4;Directives;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;MBA
+5;convergence Operations;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;HACKATON
+6;Soft;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;BOOTCAMP
+7;Illinois scalable Open-source;2021-06-14;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;SHIFT
+8;leading Cotton withdrawal;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;SHIFT
+9;neutral;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;HACKATON
+10;Generic Towels auxiliary;2021-06-15;../fake-data/blob/hipster.txt;../fake-data/blob/hipster.png;image/png;HACKATON

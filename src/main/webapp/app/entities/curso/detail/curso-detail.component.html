@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="curso">
+      <h2 data-cy="cursoDetailsHeading"><span>Curso</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ curso.id }}</span>
+        </dd>
+        <dt><span>Nome Curso</span></dt>
+        <dd>
+          <span>{{ curso.nomeCurso }}</span>
+        </dd>
+        <dt><span>Data Criacao</span></dt>
+        <dd>
+          <span>{{ curso.dataCriacao | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Descricao</span></dt>
+        <dd>
+          <span>{{ curso.descricao }}</span>
+        </dd>
+        <dt><span>Logo Curso</span></dt>
+        <dd>
+          <div *ngIf="curso.logoCurso">
+            <a (click)="openFile(curso.logoCurso, curso.logoCursoContentType)">
+              <img [src]="'data:' + curso.logoCursoContentType + ';base64,' + curso.logoCurso" style="max-width: 100%" alt="curso image" />
+            </a>
+            {{ curso.logoCursoContentType }}, {{ byteSize(curso.logoCurso) }}
+          </div>
+        </dd>
+        <dt><span>Tipo</span></dt>
+        <dd>
+          <span>{{ curso.tipo }}</span>
+        </dd>
+        <dt><span>Turma</span></dt>
+        <dd>
+          <div *ngIf="curso.turma">
+            <a [routerLink]="['/turma', curso.turma?.id, 'view']">{{ curso.turma?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/curso', curso.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
