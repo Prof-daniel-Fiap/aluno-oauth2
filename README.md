@@ -6,7 +6,7 @@ This application was generated using JHipster 7.0.1, you can find documentation 
 
 http://ip-jhipster:8080/swagger-ui/index.html
 
-## Iciar aplicação
+## Iniciar aplicação
 
 ``` .\mvnw ```
 
